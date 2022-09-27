@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!-- <html layout:decorator ="/comom/header.html"> -->
+
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div th:replace="common/header :: header"></div>
+
+<h1 th:text="#{employee.list}"></h1>
+
+
+<p>----------------------------------</p>
+<form th:action="@{/addemployees}" th:object="${employee}" method="post">
+<input th:field="*{name}"  type="text" />
+<input th:field="*{age}"  type="text" />
+<input th:field="*{phones}"  type="text" /> 
+
+<input  type="submit" value="Tao moi"/>
+</form>
+<p>-------------------------</p>
+<table>
+<tr>
+    <th>Id</th>
+	<th th:text="#{employee.name}"></th>
+	<th th:text="#{employee.tuoi}"></th>
+	<th th:text="#{employee.type}"></th>
+	<th th:text="#{employee.sdt}"></th>		
+		
+	
+</tr>
+
+<tr th:each="emp : ${employees}">
+<td th:text="${emp.id}"></td>
+<td th:text="${emp.name}"></td>
+
+<td th:text="${emp.age}"></td>
+<td th:if="${emp.age &gt;=45}" th:text="#{employee.old}"></td>
+<td th:if="${emp.age &lt;45 and emp.age &gt;=25}" th:text="#{employee.medium}"></td>
+<td th:if="${emp.age &lt;25}" th:text="#{employee.young}"></td>
+
+<td><p th:each="phone :${emp.phones}" th:text="${phone}"></p></td>
+ <!--  <td th:text="${emp.department}"></td>-->
+
+ <td><a th:href="@{'/deleteemployees?id=' + ${emp.id}}"> Delete</a></td>
+ <td><a th:href="@{'/update?id=' + ${emp.id}}"> Update</a></td>
+
+</tr>
+</table>
+<p>----------------------------------</p>
+
+<div th:replace="common/footer :: footer"></div>   
+
+</body>
+</html>

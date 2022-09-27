@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div th:replace="common/header :: header"></div>
+
+<form th:action="@{/upload-file}" enctype="multipart/form-data" method="post">
+<input name="file" type ="file" />
+<input  type="submit" value="Tai len"/>
+
+</form>
+<div th:replace="common/footer :: footer"></div>   
+
+
+</body>
+</html>

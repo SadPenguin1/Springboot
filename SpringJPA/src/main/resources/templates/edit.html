@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<form th:action="@{/update}"  th:object="${employee}" method="post">
+<input th:field="*{id}"   type="text" />
+<input th:field="*{name}"  type="text" />
+<input th:field="*{age}"  type="text" />
+<input th:field="*{phones}"  type="text" />
+
+
+<input  type="submit" value="Sua"/>
+</form>
+</body>
+</html>
